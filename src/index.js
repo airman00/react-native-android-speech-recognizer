@@ -40,6 +40,7 @@ if (Platform.OS === 'android') {
 
   SpeechRecognizer.isRecognitionAvailable = isRecognitionAvailable;
   SpeechRecognizer.createSpeechRecognizer = createSpeechRecognizer;
+}
 
   export {
      SpeechRecognizer,
@@ -48,7 +49,7 @@ if (Platform.OS === 'android') {
      isRecognitionAvailable,
      createSpeechRecognizer
    }
- 
-}
+
+
 
 export default RNAndroidSpeechRecognizer;
