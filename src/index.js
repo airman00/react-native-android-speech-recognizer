@@ -14,13 +14,16 @@ const {
   stopListening
 } = RNAndroidSpeechRecognizer || {};
 
+let setRecognitionListener;
+let createSpeechRecognizer;
+
 if (Platform.OS === 'android') {
   const eventPrefix = 'RNAndroidSpeechRecognizer_';
   RNAndroidSpeechRecognizer.setEventPrefix(eventPrefix);
 
   let emitterSubscriptions = [];
 
-  const setRecognitionListener = listener => {
+  setRecognitionListener = listener => {
     const keys = Object.keys(listener);
     emitterSubscriptions.forEach(subscription => subscription.remove());
     RNAndroidSpeechRecognizer.enableEvents(keys);
@@ -29,7 +32,7 @@ if (Platform.OS === 'android') {
     );
    }
 
-  const createSpeechRecognizer = (...args) => 
+  createSpeechRecognizer = (...args) => 
     RNAndroidSpeechRecognizer.createSpeechRecognizer(...args).then(() => ({
       cancel,
       destroy,
